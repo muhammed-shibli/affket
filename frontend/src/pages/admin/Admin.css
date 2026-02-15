@@ -1,0 +1,354 @@
+/* Admin Dashboard */
+.admin-dashboard,
+.admin-offers,
+.admin-offer-form,
+.admin-users,
+.admin-user-details,
+.admin-applications,
+.admin-withdrawals,
+.admin-gateways {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.page-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.page-header p {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.stats-section {
+  margin-top: 24px;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.chart-card {
+  margin-top: 24px;
+}
+
+.chart-container {
+  height: 300px;
+  position: relative;
+}
+
+.quick-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.quick-stat {
+  text-align: center;
+  padding: 16px;
+}
+
+.quick-stat-value {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 4px;
+}
+
+.quick-stat-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Offers */
+.offer-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.offer-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.offer-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.offer-logo span {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.offer-name {
+  font-weight: 500;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+/* Offer Form */
+.back-btn {
+  margin-bottom: 16px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 20px;
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.file-input input {
+  width: 100%;
+  padding: 10px;
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.goals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.goal-item {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.goal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.goal-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.goal-fields .input-row {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
+}
+
+/* User Details */
+.user-header-card {
+  margin-bottom: 24px;
+}
+
+.user-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.user-avatar-large {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.user-header-info {
+  flex: 1;
+}
+
+.user-header-info h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.user-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.user-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+}
+
+.info-label {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.info-value {
+  font-weight: 500;
+}
+
+.features-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Gateways */
+.gateway-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.gateway-tabs .tab {
+  padding: 10px 20px;
+  background: var(--bg-tertiary);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.gateway-tabs .tab:hover {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.gateway-tabs .tab.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.gateway-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .user-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .user-meta {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .user-actions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .goal-fields .input-row {
+    grid-template-columns: 1fr;
+  }
+
+  .input-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .quick-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .quick-stat {
+    padding: 12px;
+  }
+
+  .quick-stat-value {
+    font-size: 20px;
+  }
+}
