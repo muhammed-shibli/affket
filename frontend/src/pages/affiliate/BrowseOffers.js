@@ -177,7 +177,7 @@ const BrowseOffers = () => {
                       <Td>{offer.category_name}</Td>
                       <Td><Badge variant="primary">{offer.offer_type}</Badge></Td>
                       <Td className="font-semibold">
-                        ${parseFloat(offer.payout_amount).toFixed(2)}
+                        ₹{parseFloat(offer.payout_amount).toFixed(2)}
                         {offer.payout_type === 'percentage' && '%'}
                       </Td>
                       <Td>{getStatusBadge(offer.user_status)}</Td>

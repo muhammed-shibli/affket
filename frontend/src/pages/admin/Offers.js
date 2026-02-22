@@ -181,7 +181,7 @@ const AdminOffers = () => {
                       <Td>#{offer.id}</Td>
                       <Td>{offer.category_name}</Td>
                       <Td><Badge variant="primary">{offer.offer_type}</Badge></Td>
-                      <Td className="font-semibold">${parseFloat(offer.payout_amount).toFixed(2)}</Td>
+                      <Td className="font-semibold">₹{parseFloat(offer.payout_amount).toFixed(2)}</Td>
                       <Td>{offer.applications || 0}</Td>
                       <Td>{offer.total_clicks || 0}</Td>
                       <Td>{offer.total_conversions || 0}</Td>

@@ -151,7 +151,7 @@ const ApprovedOffers = () => {
                       <Td>{offer.category_name}</Td>
                       <Td><Badge variant="primary">{offer.offer_type}</Badge></Td>
                       <Td className="font-semibold text-success">
-                        ${parseFloat(offer.payout_amount).toFixed(2)}
+                        ₹{parseFloat(offer.payout_amount).toFixed(2)}
                         {offer.payout_type === 'percentage' && '%'}
                       </Td>
                       <Td>{new Date(offer.approved_at).toLocaleDateString()}</Td>

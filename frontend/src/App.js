@@ -44,7 +44,7 @@ const LoadingScreen = () => (
         width: 40,
         height: 40,
         border: '3px solid #e5e7eb',
-        borderTopColor: '#1e3a5f',
+        borderTopColor: '#232323',
         borderRadius: '50%',
         animation: 'spin 1s linear infinite',
         margin: '0 auto 16px'

@@ -113,7 +113,7 @@ const AdminWithdrawals = () => {
                         <div className="text-sm text-muted">{wd.user_email}</div>
                       </div>
                     </Td>
-                    <Td className="font-semibold text-xl">${parseFloat(wd.amount).toFixed(2)}</Td>
+                    <Td className="font-semibold text-xl">₹{parseFloat(wd.amount).toFixed(2)}</Td>
                     <Td>
                       {wd.bank_account_number ? (
                         <div className="text-sm">

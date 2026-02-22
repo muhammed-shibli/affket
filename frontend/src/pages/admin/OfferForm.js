@@ -1,12 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { FiArrowLeft, FiPlus, FiTrash2 } from 'react-icons/fi';
+import { FiArrowLeft, FiPlus, FiTrash2, FiCheck, FiX } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import api from '../../services/api';
 import { Card, CardHeader, CardBody } from '../../components/common/Card';
 import { Input, Select, Textarea } from '../../components/common/Input';
 import { Button } from '../../components/common/Button';
 import './Admin.css';
+
+// All Indian States and Union Territories
+const INDIAN_STATES = [
+  { value: 'AN', label: 'Andaman and Nicobar Islands' },
+  { value: 'AP', label: 'Andhra Pradesh' },
+  { value: 'AR', label: 'Arunachal Pradesh' },
+  { value: 'AS', label: 'Assam' },
+  { value: 'BR', label: 'Bihar' },
+  { value: 'CH', label: 'Chandigarh' },
+  { value: 'CT', label: 'Chhattisgarh' },
+  { value: 'DN', label: 'Dadra and Nagar Haveli and Daman and Diu' },
+  { value: 'DL', label: 'Delhi' },
+  { value: 'GA', label: 'Goa' },
+  { value: 'GJ', label: 'Gujarat' },
+  { value: 'HR', label: 'Haryana' },
+  { value: 'HP', label: 'Himachal Pradesh' },
+  { value: 'JK', label: 'Jammu and Kashmir' },
+  { value: 'JH', label: 'Jharkhand' },
+  { value: 'KA', label: 'Karnataka' },
+  { value: 'KL', label: 'Kerala' },
+  { value: 'LA', label: 'Ladakh' },
+  { value: 'LD', label: 'Lakshadweep' },
+  { value: 'MP', label: 'Madhya Pradesh' },
+  { value: 'MH', label: 'Maharashtra' },
+  { value: 'MN', label: 'Manipur' },
+  { value: 'ML', label: 'Meghalaya' },
+  { value: 'MZ', label: 'Mizoram' },
+  { value: 'NL', label: 'Nagaland' },
+  { value: 'OR', label: 'Odisha' },
+  { value: 'PY', label: 'Puducherry' },
+  { value: 'PB', label: 'Punjab' },
+  { value: 'RJ', label: 'Rajasthan' },
+  { value: 'SK', label: 'Sikkim' },
+  { value: 'TN', label: 'Tamil Nadu' },
+  { value: 'TG', label: 'Telangana' },
+  { value: 'TR', label: 'Tripura' },
+  { value: 'UP', label: 'Uttar Pradesh' },
+  { value: 'UK', label: 'Uttarakhand' },
+  { value: 'WB', label: 'West Bengal' }
+];
 
 const AdminOfferForm = () => {
   const navigate = useNavigate();
@@ -16,6 +56,7 @@ const AdminOfferForm = () => {
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [showStateDropdown, setShowStateDropdown] = useState(false);
 
   const [form, setForm] = useState({
     name: '',
@@ -28,7 +69,8 @@ const AdminOfferForm = () => {
     tracking_url: '',
     daily_cap: '',
     total_cap: '',
-    status: 'active'
+    status: 'active',
+    target_states: INDIAN_STATES.map(s => s.value) // All states selected by default
   });
 
   const [goals, setGoals] = useState([
@@ -43,6 +85,17 @@ const AdminOfferForm = () => {
       fetchOffer();
     }
   }, [id]);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!e.target.closest('.multi-select-container')) {
+        setShowStateDropdown(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
 
   const fetchCategories = async () => {
     try {
@@ -72,7 +125,8 @@ const AdminOfferForm = () => {
           tracking_url: offer.tracking_url || '',
           daily_cap: offer.daily_cap || '',
           total_cap: offer.total_cap || '',
-          status: offer.status
+          status: offer.status,
+          target_states: offer.target_states ? JSON.parse(offer.target_states) : INDIAN_STATES.map(s => s.value)
         });
         if (offer.goals?.length > 0) {
           setGoals(offer.goals.map(g => ({
@@ -115,6 +169,37 @@ const AdminOfferForm = () => {
     }
   };
 
+  // State selection handlers
+  const toggleState = (stateValue) => {
+    setForm(prev => {
+      const currentStates = prev.target_states || [];
+      if (currentStates.includes(stateValue)) {
+        return { ...prev, target_states: currentStates.filter(s => s !== stateValue) };
+      } else {
+        return { ...prev, target_states: [...currentStates, stateValue] };
+      }
+    });
+  };
+
+  const selectAllStates = () => {
+    setForm(prev => ({ ...prev, target_states: INDIAN_STATES.map(s => s.value) }));
+  };
+
+  const clearAllStates = () => {
+    setForm(prev => ({ ...prev, target_states: [] }));
+  };
+
+  const getSelectedStatesLabel = () => {
+    const count = form.target_states?.length || 0;
+    if (count === 0) return 'Select target states';
+    if (count === INDIAN_STATES.length) return 'All States Selected';
+    if (count === 1) {
+      const state = INDIAN_STATES.find(s => s.value === form.target_states[0]);
+      return state?.label || '1 State Selected';
+    }
+    return `${count} States Selected`;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -127,7 +212,11 @@ const AdminOfferForm = () => {
     try {
       const formData = new FormData();
       Object.keys(form).forEach(key => {
-        formData.append(key, form[key]);
+        if (key === 'target_states') {
+          formData.append(key, JSON.stringify(form[key]));
+        } else {
+          formData.append(key, form[key]);
+        }
       });
       formData.append('goals', JSON.stringify(goals.filter(g => g.event_name)));
 
@@ -250,6 +339,49 @@ const AdminOfferForm = () => {
                     onChange={handleChange}
                     placeholder="0.00"
                   />
+                </div>
+
+                {/* Target States Multi-Select */}
+                <div className="input-group">
+                  <label className="input-label">Target States</label>
+                  <div className="multi-select-container">
+                    <div
+                      className="multi-select-trigger"
+                      onClick={() => setShowStateDropdown(!showStateDropdown)}
+                    >
+                      <span className={form.target_states?.length === 0 ? 'placeholder' : ''}>
+                        {getSelectedStatesLabel()}
+                      </span>
+                      <span className="multi-select-arrow">▼</span>
+                    </div>
+
+                    {showStateDropdown && (
+                      <div className="multi-select-dropdown">
+                        <div className="multi-select-actions">
+                          <button type="button" onClick={selectAllStates} className="select-action-btn">
+                            <FiCheck /> Select All
+                          </button>
+                          <button type="button" onClick={clearAllStates} className="select-action-btn clear">
+                            <FiX /> Clear All
+                          </button>
+                        </div>
+                        <div className="multi-select-options">
+                          {INDIAN_STATES.map(state => (
+                            <label key={state.value} className="multi-select-option">
+                              <input
+                                type="checkbox"
+                                checked={form.target_states?.includes(state.value)}
+                                onChange={() => toggleState(state.value)}
+                              />
+                              <span className="checkmark"></span>
+                              <span className="option-label">{state.label}</span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <span className="input-hint">Select states where this offer should be available</span>
                 </div>
 
                 <Input

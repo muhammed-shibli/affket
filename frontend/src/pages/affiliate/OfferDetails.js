@@ -144,7 +144,7 @@ const OfferDetails = () => {
             <div className="offer-payout-box">
               <span className="payout-label">Payout</span>
               <span className="payout-value">
-                ${parseFloat(offer.payout_amount).toFixed(2)}
+                ₹{parseFloat(offer.payout_amount).toFixed(2)}
                 {offer.payout_type === 'percentage' && '%'}
               </span>
               <span className="payout-type">{offer.payout_type}</span>
@@ -214,7 +214,7 @@ const OfferDetails = () => {
                   <tr key={goal.id}>
                     <Td className="font-semibold">{goal.event_name}</Td>
                     <Td>{goal.objective || '-'}</Td>
-                    <Td className="text-success">${parseFloat(goal.payout_amount).toFixed(2)}</Td>
+                    <Td className="text-success">₹{parseFloat(goal.payout_amount).toFixed(2)}</Td>
                     <Td>{goal.payout_type}</Td>
                     <Td>{goal.remaining_cap > 0 ? goal.remaining_cap : 'Unlimited'}</Td>
                   </tr>

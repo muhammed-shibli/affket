@@ -169,7 +169,7 @@ const Profile = () => {
               </div>
               <div className="status-item">
                 <span className="status-label">Wallet Balance</span>
-                <span className="text-success font-semibold">${parseFloat(user?.wallet_balance || 0).toFixed(2)}</span>
+                <span className="text-success font-semibold">₹{parseFloat(user?.wallet_balance || 0).toFixed(2)}</span>
               </div>
             </div>
           </CardBody>

@@ -33,12 +33,433 @@
   position: relative;
 }
 
+/* ========== NEW DASHBOARD STYLES ========== */
+.dashboard-new {
+  padding: 0;
+}
+
+.dashboard-welcome {
+  margin-bottom: 24px;
+}
+
+.dashboard-welcome h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.dashboard-welcome p {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* Main Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.dashboard-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stats-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* New Stat Cards */
+.stat-card-new {
+  padding: 20px;
+  border-radius: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card-new:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-card-light-green {
+  background: #e8f5e9;
+}
+
+.stat-card-light-yellow {
+  background: #fff8e1;
+}
+
+.stat-card-white {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+}
+
+.stat-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.stat-card-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.stat-card-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+}
+
+.stat-card-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.stat-card-change {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.stat-card-change.positive {
+  color: #10b981;
+}
+
+.stat-card-change.negative {
+  color: #ef4444;
+}
+
+.stat-card-change svg {
+  font-size: 14px;
+}
+
+/* Earnings Chart Card */
+.dashboard-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.earnings-chart-card {
+  background: #f5f0e8;
+  border-radius: 16px;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.chart-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.chart-value-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chart-main-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.chart-change {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.chart-change.positive {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.chart-period-badge {
+  background: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chart-container-new {
+  flex: 1;
+  min-height: 200px;
+  position: relative;
+}
+
+/* Bottom Section */
+.dashboard-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Today Stats Card */
+.today-stats-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.today-stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.today-stats-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.more-icon {
+  color: var(--text-muted);
+  cursor: pointer;
+  letter-spacing: 2px;
+}
+
+.today-stats-grid {
+  display: flex;
+  gap: 12px;
+}
+
+.today-stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.today-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.today-stat-icon.clicks {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.today-stat-icon.conversions {
+  background: #e8f5e9;
+  color: #388e3c;
+}
+
+.today-stat-icon.earnings {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.today-stat-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.today-stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Yesterday Stats Card */
+.yesterday-stats-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.yesterday-stats-header {
+  margin-bottom: 16px;
+}
+
+.yesterday-stats-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.yesterday-stats-table {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.yesterday-stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.yesterday-stat-row.header {
+  background: transparent;
+  font-size: 12px;
+  color: var(--text-secondary);
+  padding: 8px 16px;
+}
+
+.yesterday-stat-row .value {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.yesterday-stat-row .value.earnings {
+  color: #10b981;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .stats-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .today-stats-grid {
+    flex-direction: column;
+  }
+
+  .stat-card-value {
+    font-size: 24px;
+  }
+
+  .chart-main-value {
+    font-size: 20px;
+  }
+}
+
+/* ========== END NEW DASHBOARD STYLES ========== */
+
 /* Reports */
 .click-id {
   font-size: 11px;
   background: var(--bg-tertiary);
   padding: 2px 6px;
   border-radius: 4px;
+}
+
+/* Header Actions */
+.header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Export Dropdown */
+.export-container {
+  position: relative;
+}
+
+.export-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
+  margin-top: 4px;
+  min-width: 180px;
+  overflow: hidden;
+}
+
+.export-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-primary);
+  transition: background 0.15s;
+  text-align: left;
+}
+
+.export-option:hover {
+  background: var(--bg-secondary);
+}
+
+.export-option:not(:last-child) {
+  border-bottom: 1px solid var(--border-light);
+}
+
+.export-icon {
+  font-size: 18px;
+}
+
+.export-icon.pdf {
+  color: #dc2626;
+}
+
+.export-icon.excel {
+  color: #16a34a;
+}
+
+.export-icon.csv {
+  color: #2563eb;
 }
 
 .column-selection {

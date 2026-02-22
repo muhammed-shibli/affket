@@ -90,7 +90,7 @@ const AdminApplications = () => {
                       </div>
                     </Td>
                     <Td className="text-success font-semibold">
-                      ${parseFloat(app.payout_amount).toFixed(2)}
+                      ₹{parseFloat(app.payout_amount).toFixed(2)}
                     </Td>
                     <Td>{new Date(app.applied_at).toLocaleString()}</Td>
                     <Td>

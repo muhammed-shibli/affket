@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { FiArrowLeft, FiCheck, FiX, FiDollarSign, FiMousePointer, FiCheckCircle } from 'react-icons/fi';
+import { FiArrowLeft, FiCheck, FiX, FiMousePointer, FiCheckCircle } from 'react-icons/fi';
+import { BiRupee } from 'react-icons/bi';
 import { toast } from 'react-toastify';
 import api from '../../services/api';
 import { Card, CardHeader, CardBody, StatCard } from '../../components/common/Card';
@@ -163,14 +164,14 @@ const AdminUserDetails = () => {
         />
         <StatCard
           title="Total Earnings"
-          value={`$${parseFloat(user.total_earnings || 0).toFixed(2)}`}
-          icon={FiDollarSign}
+          value={`₹${parseFloat(user.total_earnings || 0).toFixed(2)}`}
+          icon={BiRupee}
           color="warning"
         />
         <StatCard
           title="Wallet Balance"
-          value={`$${parseFloat(user.wallet_balance || 0).toFixed(2)}`}
-          icon={FiDollarSign}
+          value={`₹${parseFloat(user.wallet_balance || 0).toFixed(2)}`}
+          icon={BiRupee}
           color="success"
         />
       </div>
@@ -256,7 +257,7 @@ const AdminUserDetails = () => {
                 {user.applications.map((app) => (
                   <tr key={app.id}>
                     <Td className="font-semibold">{app.offer_name}</Td>
-                    <Td>${parseFloat(app.payout_amount).toFixed(2)}</Td>
+                    <Td>₹{parseFloat(app.payout_amount).toFixed(2)}</Td>
                     <Td>{getStatusBadge(app.status)}</Td>
                     <Td>{new Date(app.applied_at).toLocaleString()}</Td>
                   </tr>
@@ -292,7 +293,7 @@ const AdminUserDetails = () => {
                     <Td className="capitalize">{tx.type}</Td>
                     <Td>{tx.description}</Td>
                     <Td className={tx.type === 'credit' ? 'text-success' : 'text-error'}>
-                      {tx.type === 'credit' ? '+' : '-'}${parseFloat(tx.amount).toFixed(2)}
+                      {tx.type === 'credit' ? '+' : '-'}₹{parseFloat(tx.amount).toFixed(2)}
                     </Td>
                     <Td>
                       <Badge variant={tx.status === 'paid' ? 'success' : tx.status === 'pending' ? 'warning' : 'error'}>

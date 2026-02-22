@@ -153,7 +153,7 @@ const AdminUsers = () => {
                       <Td>{user.approved_offers || 0}</Td>
                       <Td>{user.total_clicks || 0}</Td>
                       <Td>{user.total_conversions || 0}</Td>
-                      <Td className="text-success">${parseFloat(user.total_earnings || 0).toFixed(2)}</Td>
+                      <Td className="text-success">₹{parseFloat(user.total_earnings || 0).toFixed(2)}</Td>
                       <Td>{new Date(user.created_at).toLocaleDateString()}</Td>
                       <Td>
                         <div className="action-buttons">

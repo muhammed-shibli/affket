@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { FiDollarSign, FiArrowDownCircle, FiArrowUpCircle } from 'react-icons/fi';
+import { FiArrowDownCircle, FiArrowUpCircle } from 'react-icons/fi';
+import { BiRupee } from 'react-icons/bi';
 import { toast } from 'react-toastify';
 import api from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
@@ -90,7 +91,7 @@ const Wallet = () => {
       case 'debit':
         return <FiArrowUpCircle className="text-error" />;
       default:
-        return <FiDollarSign />;
+        return <BiRupee />;
     }
   };
 
@@ -116,7 +117,7 @@ const Wallet = () => {
             <div className="balance-content">
               <div className="balance-info">
                 <span className="balance-label">Available Balance</span>
-                <span className="balance-value">${wallet.balance.toFixed(2)}</span>
+                <span className="balance-value">₹{wallet.balance.toFixed(2)}</span>
               </div>
               <Button
                 variant="primary"
@@ -146,7 +147,7 @@ const Wallet = () => {
         <CardBody>
           {wallet.transactions.length === 0 ? (
             <EmptyState
-              icon={FiDollarSign}
+              icon={BiRupee}
               title="No transactions"
               description="Your transaction history will appear here"
             />
@@ -173,9 +174,9 @@ const Wallet = () => {
                     </Td>
                     <Td>{tx.description}</Td>
                     <Td className={tx.type === 'credit' ? 'text-success' : 'text-error'}>
-                      {tx.type === 'credit' ? '+' : '-'}${parseFloat(tx.amount).toFixed(2)}
+                      {tx.type === 'credit' ? '+' : '-'}₹{parseFloat(tx.amount).toFixed(2)}
                     </Td>
-                    <Td>${parseFloat(tx.balance_after).toFixed(2)}</Td>
+                    <Td>₹{parseFloat(tx.balance_after).toFixed(2)}</Td>
                     <Td>{getStatusBadge(tx.status)}</Td>
                     <Td>{new Date(tx.created_at).toLocaleString()}</Td>
                   </tr>
@@ -196,7 +197,7 @@ const Wallet = () => {
         <div className="withdraw-form">
           <div className="withdraw-balance">
             <span>Available Balance:</span>
-            <strong>${wallet.balance.toFixed(2)}</strong>
+            <strong>₹{wallet.balance.toFixed(2)}</strong>
           </div>
 
           <Input

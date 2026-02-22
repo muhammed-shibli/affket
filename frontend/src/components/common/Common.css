@@ -75,7 +75,7 @@
   font-size: 24px;
 }
 
-.stat-primary .stat-icon { background: rgba(30, 58, 95, 0.1); color: var(--primary-color); }
+.stat-primary .stat-icon { background: rgba(35, 35, 35, 0.1); color: var(--primary-color); }
 .stat-success .stat-icon { background: rgba(16, 185, 129, 0.1); color: var(--success-color); }
 .stat-warning .stat-icon { background: rgba(245, 158, 11, 0.1); color: var(--warning-color); }
 .stat-error .stat-icon { background: rgba(239, 68, 68, 0.1); color: var(--error-color); }
@@ -209,7 +209,7 @@
 .input:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.1);
+  box-shadow: 0 0 0 3px rgba(35, 35, 35, 0.1);
 }
 
 .input.has-icon {
@@ -307,7 +307,7 @@
 .badge-success { background: rgba(16, 185, 129, 0.1); color: var(--success-color); }
 .badge-warning { background: rgba(245, 158, 11, 0.1); color: var(--warning-color); }
 .badge-error { background: rgba(239, 68, 68, 0.1); color: var(--error-color); }
-.badge-primary { background: rgba(30, 58, 95, 0.1); color: var(--primary-color); }
+.badge-primary { background: rgba(35, 35, 35, 0.1); color: var(--primary-color); }
 
 /* Pagination */
 .pagination {
